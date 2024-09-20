@@ -27,10 +27,10 @@ source $_SCRIPTDIR/common-files/termux_download.sh
 : ${_TMP_DIR:=$_SCRIPTDIR/tmp}
 : ${_API_LEVEL:=21}
 : ${_MAKE_PROCESSES:=$(nproc)}
-: ${GCC_VERSION:=13.2.0}
-: ${GCC_SHA256:=8cb4be3796651976f94b9356fa08d833524f62420d6292c5033a9a26af315078}
-: ${BINUTILS_VERSION:=2.41}
-: ${BINUTILS_SHA256:=48d00a8dc73aa7d2394a7dc069b96191d95e8de8f0da6dc91da5cce655c20e45}
+: ${GCC_VERSION:=13.3.0}
+: ${GCC_SHA256:=3a2b10cab86e32358fdac871546d57e2700e9bdb5875ef33fff5b601265b9e32}
+: ${BINUTILS_VERSION:=2.43}
+: ${BINUTILS_SHA256:=025c436d15049076ebe511d29651cc4785ee502965a8839936a65518582bdd64}
 
 export TOOLCHAIN_ARCH
 
@@ -103,6 +103,8 @@ $BINUTILS_SRC_DIR/configure \
 		--target=$_HOST_PLATFORM \
 		--prefix=$_TMP_DIR/newer-toolchain \
 		--with-sysroot=$_TMP_DIR/newer-toolchain/sysroot \
+		--with-zstd \
+		ZSTD_LIBS=-l:libzstd.a \
 		$_BINUTILS_EXTRA_HOST_BUILD
 make -j $_MAKE_PROCESSES
 make -j $_MAKE_PROCESSES install-strip
