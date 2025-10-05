@@ -27,10 +27,10 @@ source $_SCRIPTDIR/common-files/termux_download.sh
 : ${_TMP_DIR:=$_SCRIPTDIR/tmp}
 : ${_API_LEVEL:=21}
 : ${_MAKE_PROCESSES:=$(nproc)}
-: ${GCC_VERSION:=13.3.0}
-: ${GCC_SHA256:=3a2b10cab86e32358fdac871546d57e2700e9bdb5875ef33fff5b601265b9e32}
-: ${BINUTILS_VERSION:=2.43}
-: ${BINUTILS_SHA256:=025c436d15049076ebe511d29651cc4785ee502965a8839936a65518582bdd64}
+: ${GCC_VERSION:=13.4.0}
+: ${GCC_SHA256:=bf0baf3e570c9c74c17c8201f0196c6924b4bd98c90e69d6b2ac0cd823f33bbc}
+: ${BINUTILS_VERSION:=2.44}
+: ${BINUTILS_SHA256:=0cdd76777a0dfd3dd3a63f215f030208ddb91c2361d2bcc02acec0f1c16b6a2e}
 
 export TOOLCHAIN_ARCH
 
@@ -63,11 +63,11 @@ sudo apt install -y libgmp-dev libmpfr-dev libmpc-dev zlib1g-dev libisl-dev libt
 pushd $_TMP_DIR
 
 # Download source
-GCC_SRC_URL=https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz
+GCC_SRC_URL=https://mirrors.kernel.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz
 GCC_SRC_FILE=$_CACHE_DIR/gcc-${GCC_VERSION}.tar.gz
 GCC_SRC_DIR=$_TMP_DIR/gcc-${GCC_VERSION}
 termux_download $GCC_SRC_URL $GCC_SRC_FILE $GCC_SHA256
-BINUTILS_SRC_URL=https://ftp.gnu.org/gnu/binutils/binutils-${BINUTILS_VERSION}.tar.gz
+BINUTILS_SRC_URL=https://mirrors.kernel.org/gnu/binutils/binutils-${BINUTILS_VERSION}.tar.gz
 BINUTILS_SRC_FILE=$_CACHE_DIR/binutils-${BINUTILS_VERSION}.tar.gz
 BINUTILS_SRC_DIR=$_TMP_DIR/binutils-${BINUTILS_VERSION}
 termux_download $BINUTILS_SRC_URL $BINUTILS_SRC_FILE $BINUTILS_SHA256
